@@ -1,0 +1,11 @@
+# Define que es un servicio web
+type: web
+# Especifica el lenguaje y entorno
+build:
+  env: java
+# Comando de build para Maven
+prebuild:
+  - ./mvnw clean install
+# Comando para iniciar la aplicación
+start:
+  - java -jar target/*.jar
