@@ -1,26 +1,49 @@
 function validarFormulario() {
-    var nombre = document.getElementById('nombre').value;
-    var apellido = document.getElementById('apellido').value;
-    var login = document.getElementById('login').value;
-    var password = document.getElementById('password').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const login = document.getElementById('login').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const perfil = document.querySelector('[name="perfil"]').value;
 
-    var mensaje = document.getElementById('mensaje');
+    const guardarBtn = document.getElementById('guardar-usuario');
+    const mensaje = document.getElementById('mensaje');
+
+    let errores = [];
+
     mensaje.innerHTML = '';
-    console.log(nombre);
+
     if (nombre.length < 2) {
-        mensaje.innerHTML += '<div class="alert alert-danger">El nombre debe tener al menos 2 caracteres.</div>';
+        errores.push("El nombre debe tener al menos 2 caracteres.")
     }
     if (apellido.length < 2) {
-        mensaje.innerHTML += '<div class="alert alert-danger">El apellido debe tener al menos 2 caracteres.</div>';
+        errores.push("El apellido debe tener al menos 2 caracteres.")
     }
     if (login.length < 3) {
-        mensaje.innerHTML += '<div class="alert alert-danger">El login debe tener al menos 3 caracteres.</div>';
+        errores.push("El login debe tener al menos 3 caracteres.")
     }
     if (password.length < 6) {
-        mensaje.innerHTML += '<div class="alert alert-danger">La contraseña debe tener al menos 6 caracteres.</div>';
+        errores.push("La contraseña debe tener al menos 6 caracteres.")
     }
-    if (mensaje.innerHTML == '') {
-        mensaje.innerHTML = '<div class="alert alert-success">Todos los datos son correctos.</div>';
+    if (perfil === "") {
+        errores.push("Debe seleccionar un perfil.")
+    }
+    if (errores.length > 0) {
+        guardarBtn.disabled = true;
+        errores.forEach(error => {
+            mensaje.innerHTML += `<div class="alert alert-danger">${error}</div>`;
+        });
+    } else {
+        guardarBtn.disabled = false;
+        mensaje.innerHTML = `<div class="alert alert-success">Todos los datos son válidos</div>`;
     }
 }
 
+// Detectar cambios en tiempo real
+window.addEventListener('DOMContentLoaded', () => {
+    const campos = ['nombre', 'apellido', 'login', 'password'];
+    campos.forEach(id => {
+        document.getElementById(id).addEventListener('input', validarFormulario);
+    });
+
+    document.querySelector('[name="perfil"]').addEventListener('change', validarFormulario);
+});
