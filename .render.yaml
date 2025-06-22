@@ -5,7 +5,7 @@ build:
   env: java
 # Comando de build para Maven
 prebuild:
+  - export JAVA_HOME=/opt/render/project/.jdk
   - ./mvnw clean install
-# Comando para iniciar la aplicación
 start:
   - java -jar target/*.jar
