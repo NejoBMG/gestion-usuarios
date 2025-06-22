@@ -1,9 +1,13 @@
 type: web
 
 build:
-  env:
-    JAVA_VERSION: 17
-  command: ./mvnw clean install
+  command: |
+    curl -s "https://api.adoptium.net/v3/binary/latest/21/ga/linux/x64/jdk/hotspot/normal/eclipse" \
+      | tar xz -C /tmp
+    export JAVA_HOME=$(find /tmp -name "jdk-21*" -type d | head -n 1)
+    export PATH=$JAVA_HOME/bin:$PATH
+    ./mvnw clean install
+
 
 start:
   command: java -jar target/*.jar
