@@ -1,0 +1,10 @@
+com\crud\gestion_usuarios\repositorio\UsuarioRepositorio.class
+com\crud\gestion_usuarios\servicio\UsuarioServicioInterfaz.class
+com\crud\gestion_usuarios\modelo\Usuario.class
+com\crud\gestion_usuarios\servicio\PerfilServicio.class
+com\crud\gestion_usuarios\controlador\UsuarioControlador.class
+com\crud\gestion_usuarios\modelo\Perfil.class
+com\crud\gestion_usuarios\repositorio\PerfilRespositorio.class
+com\crud\gestion_usuarios\servicio\PerfilServicioInterfaz.class
+com\crud\gestion_usuarios\servicio\UsuarioServicio.class
+com\crud\gestion_usuarios\GestionUsuariosApplication.class
