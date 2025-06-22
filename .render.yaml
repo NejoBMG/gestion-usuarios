@@ -1,11 +1,9 @@
-# Define que es un servicio web
 type: web
-# Especifica el lenguaje y entorno
+
 build:
-  env: java
-# Comando de build para Maven
-prebuild:
-  - export JAVA_HOME=/opt/render/project/.jdk
-  - ./mvnw clean install
+  env:
+    JAVA_VERSION: 17
+  command: ./mvnw clean install
+
 start:
-  - java -jar target/*.jar
+  command: java -jar target/*.jar
