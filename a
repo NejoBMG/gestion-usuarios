@@ -1,9 +1,0 @@
-type: web
-
-build:
-  env:
-    JAVA_VERSION: 17
-  command: ./mvnw clean install
-
-start:
-  command: java -jar target/*.jar
