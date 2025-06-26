@@ -13,7 +13,23 @@ public class PerfilServicio implements PerfilServicioInterfaz{
     @Autowired
     private PerfilRespositorio perfilRespositorio;
 
+    @Override
     public List<Perfil> listar(){
         return perfilRespositorio.findAll();
     }
+    @Override
+    public Perfil obtenerPerfilId(int id) {
+        return perfilRespositorio.findById(id).orElse(null);
+    }
+
+    @Override
+    public void guardarPerfil(Perfil perfil) {
+        perfilRespositorio.save(perfil);
+    }
+
+    @Override
+    public void eliminarPerfil(int id) {
+        perfilRespositorio.deleteById(id);
+    }
+
 }
